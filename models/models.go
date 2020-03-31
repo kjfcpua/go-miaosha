@@ -35,7 +35,7 @@ func Setup() {
 		log.Fatalf("models.Setup err: %v", err)
 	}
 	db.SingularTable(true)
-	//可以使用钩子替换默认的CreatedAt、ModifiedAt、DeletedAt时间格式为CreatedOn、ModifiedOn、DeletedOn时间戳格式
+	//可以使用钩子替换默认的CreatedAt、UpdatedAt、DeletedAt时间格式为CreatedOn、ModifiedOn、DeletedOn时间戳格式
 	//db.Callback().Create().Replace("gorm:update_time_stamp", updateTimeStampForCreateCallback)
 	//db.Callback().Update().Replace("gorm:update_time_stamp", updateTimeStampForUpdateCallback)
 	//db.Callback().Delete().Replace("gorm:delete", deleteCallback)
@@ -45,6 +45,7 @@ func Setup() {
 func Init() {
 	InitHello()
 	InitUser()
+	InitGoods()
 }
 
 func CloseDB() {
