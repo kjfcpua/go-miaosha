@@ -10,17 +10,17 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-//定义表模型
+// 定义表模型
 type Hello struct {
 	Name string
 }
 
-//设置表名
-func (v Hello) TableName() string {
+// 设置表名
+func (h Hello) TableName() string {
 	return "hello"
 }
 
-//创建初始化表
+// 创建初始化表
 func InitHello() {
 	//如果数据库中查询不到hello表，则创建
 	if !db.HasTable(&Hello{}) {
@@ -50,16 +50,13 @@ func GetHello(pageSize int, page int) ([]Hello, error) {
 		hello []Hello
 		err   error
 	)
-
 	if pageSize > 0 && page > 0 {
 		err = db.Limit(pageSize).Offset((page - 1) * pageSize).Find(&hello).Error
 	} else {
 		err = db.Find(&hello).Error
 	}
-
 	if err != nil && err != gorm.ErrRecordNotFound {
 		return nil, err
 	}
-
 	return hello, nil
 }
