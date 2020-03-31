@@ -19,8 +19,19 @@ info:
   title: go实现的秒杀系统
   version: "1.0"
 paths:
-  /api/v1/hello:
+  /api/v1/hello/{pageSize}/{page}:
     get:
+      parameters:
+      - description: pageSize
+        in: path
+        name: pageSize
+        required: true
+        type: integer
+      - description: page
+        in: path
+        name: page
+        required: true
+        type: integer
       produces:
       - application/json
       responses:

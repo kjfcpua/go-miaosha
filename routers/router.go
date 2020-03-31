@@ -26,7 +26,7 @@ func InitRouter() *gin.Engine {
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	apiV1 := r.Group("/api/v1")
 	{
-		apiV1.GET("/hello", v1.Hello)
+		apiV1.GET("/hello/:pageSize/:page", v1.Hello)
 	}
 	return r
 }

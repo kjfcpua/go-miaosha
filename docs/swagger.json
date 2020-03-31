@@ -14,12 +14,28 @@
         "version": "1.0"
     },
     "paths": {
-        "/api/v1/hello": {
+        "/api/v1/hello/{pageSize}/{page}": {
             "get": {
                 "produces": [
                     "application/json"
                 ],
                 "summary": "测试输出Hello",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "pageSize",
+                        "name": "pageSize",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "page",
+                        "name": "page",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",

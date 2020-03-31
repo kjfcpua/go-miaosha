@@ -20,7 +20,17 @@ type Server struct {
 	WriteTimeout time.Duration
 }
 
+type Database struct {
+	Type     string
+	User     string
+	Password string
+	Host     string
+	Name     string
+}
+
 var ServerSetting = &Server{}
+
+var DatabaseSetting = &Database{}
 
 var cfg *ini.File
 
@@ -34,6 +44,7 @@ func Setup() {
 	mapTo("server", ServerSetting)
 	ServerSetting.ReadTimeout = ServerSetting.ReadTimeout * time.Second
 	ServerSetting.WriteTimeout = ServerSetting.WriteTimeout * time.Second
+	mapTo("database", DatabaseSetting)
 }
 
 // 在 go-ini 中可以采用 MapTo 的方式来映射结构体:

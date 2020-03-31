@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	_ "github.com/togettoyou/go-miaosha/docs"
+	"github.com/togettoyou/go-miaosha/models"
 	"github.com/togettoyou/go-miaosha/pkg/setting"
 	"github.com/togettoyou/go-miaosha/routers"
 	"log"
@@ -19,6 +20,7 @@ import (
 
 func init() {
 	setting.Setup()
+	models.Setup()
 }
 
 // @title go实现的秒杀系统
